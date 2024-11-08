@@ -46,6 +46,5 @@ jobs:
             -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
           projectBaseDir: .
-
           
     
