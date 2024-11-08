@@ -30,7 +30,6 @@ jobs:
         with: 
           name: code
           path: .
-          
  sonarcloud:
     runs-on: ubuntu-latest
     steps:
@@ -40,24 +39,7 @@ jobs:
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         with:
-          projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
-          organization: ${{ secrets.SONAR_ORGANIZATION }}
-          token: ${{ secrets.SONAR_TOKEN }}
-
-  # Job за Trivy сканиране
- trivy:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Trivy Scan
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: <your-docker-image>
-        format: table
-        exit-code: 1
-        ignore-unfixed: true
-
-  # Job за Snyk сканиране
-
+          args: >
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
