@@ -30,6 +30,8 @@ jobs:
         with: 
           name: code
           path: .
+ 
+
  sonarcloud:
     runs-on: ubuntu-latest
     steps:
@@ -40,5 +42,8 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.projectKey= -Dsonar.organization= -Dsonar.login= projectBaseDir: .
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          projectBaseDir: .
     
