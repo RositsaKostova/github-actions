@@ -30,3 +30,28 @@ jobs:
         with: 
           name: code
           path: .
+          
+ Sonarcloud:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+
+ Trivy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Trivy Scan
+        uses: aquasecurity/trivy-action@master
+
+ Snyk:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install Snyk
+      run: install
+  
