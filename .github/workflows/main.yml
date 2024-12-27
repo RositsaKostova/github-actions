@@ -44,4 +44,6 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           
-    
+    - name: Flake8 annotation
+    uses: multani/flake8-github-action@master
+
